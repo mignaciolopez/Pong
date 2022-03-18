@@ -378,6 +378,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1295727949}
+  paddle1: {fileID: 620680296}
+  paddle2: {fileID: 1501379397}
   score1: 0
   score2: 0
 --- !u!4 &210559419

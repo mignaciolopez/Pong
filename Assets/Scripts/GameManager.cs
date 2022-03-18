@@ -5,10 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] Ball ball;
+    [SerializeField] PaddleController paddle1;
+    [SerializeField] PaddleController paddle2;
 
     public static GameManager instance { private set; get; }
 
-    public int score1, score2;    
+    [HideInInspector] public int score1, score2;    
 
     private void Awake()
     {
@@ -29,6 +31,13 @@ public class GameManager : MonoBehaviour
         else
             score1++;
 
+        Restart();
+    }
+
+    public void Restart()
+    {
         ball.Launch();
+        paddle1.RestartPosition();
+        paddle2.RestartPosition();
     }
 }
