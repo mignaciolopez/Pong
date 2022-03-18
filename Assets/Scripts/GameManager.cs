@@ -8,19 +8,28 @@ public class GameManager : MonoBehaviour
     [SerializeField] PaddleController paddle1;
     [SerializeField] PaddleController paddle2;
 
-    public static GameManager instance { private set; get; }
+    private static GameManager m_instance = null;
+    public static GameManager instance
+    {
+        private set { }
+
+        get
+        {
+            return m_instance;
+        }
+    }
 
     [HideInInspector] public int score1, score2;    
 
     private void Awake()
     {
-        if(instance)
+        if(m_instance)
         {
             Destroy(gameObject);
             return;
         }
 
-        instance = this;
+        m_instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
