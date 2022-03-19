@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     PaddleController paddle1;
     PaddleController paddle2;
 
+    [SerializeField] AudioClip startGameAudio;
+    [SerializeField] AudioSource audioSource;
+
     private static GameManager m_instance = null;
 
     public enum GameMode
@@ -113,6 +116,8 @@ public class GameManager : MonoBehaviour
 
     public void SetMode(GameMode mode)
     {
+        audioSource.clip = startGameAudio;
+        audioSource.Play();
         gameMode = mode;
     }
 }

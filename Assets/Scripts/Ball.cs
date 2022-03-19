@@ -7,6 +7,8 @@ public class Ball : MonoBehaviour
 {
     Rigidbody2D rb;
 
+    [SerializeField] AudioSource audioSource;
+
     [SerializeField] float initialSpeed = 5f;
     [SerializeField] float maxSpeed = 15f;
     [SerializeField] float forceMagnitude = 1f;
@@ -46,6 +48,10 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Paddle"))
         {
+            if (audioSource.isPlaying)
+                audioSource.Stop();
+
+            audioSource.Play();
             ContactPoint2D contact = collision.GetContact(0);
             Vector2 localPosition = collision.gameObject.transform.InverseTransformPoint(contact.point);
             
