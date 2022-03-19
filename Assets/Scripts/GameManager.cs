@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     }
     GameMode gameMode = GameMode.vsComp;
 
+    [HideInInspector] public float aiDelay = 0f;
+
     public static GameManager instance
     {
         private set { }
@@ -101,6 +103,7 @@ public class GameManager : MonoBehaviour
                     break;
                 case GameMode.vsComp:
                     paddle2.aiControlled = true;
+                    paddle2.aiDelay = aiDelay;
                     break;
                 default:
                     break;

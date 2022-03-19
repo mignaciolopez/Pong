@@ -13,7 +13,7 @@ public class PaddleController : MonoBehaviour
     GameObject ball;
 
     float verticalInput;
-    [SerializeField] float aiDelay = 0.025f;
+    public float aiDelay = 0.025f;
 
     bool coRoutine = false;
 
