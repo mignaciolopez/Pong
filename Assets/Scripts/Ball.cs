@@ -8,6 +8,8 @@ public class Ball : MonoBehaviour
     Rigidbody2D rb;
 
     [SerializeField] float initialSpeed = 5f;
+    [SerializeField] float maxSpeed = 15f;
+    [SerializeField] float forceMagnitude = 1f;
 
     void Start()
     {
@@ -17,12 +19,37 @@ public class Ball : MonoBehaviour
 
     public void Launch()
     {
-        transform.position = Vector3.zero;
+        rb.position = Vector2.zero;
+        rb.velocity = Vector2.zero;
 
         Vector2 randomVel = Vector2.zero;
         randomVel.x = Random.Range(0, 2) == 0 ? 1 : -1;
         randomVel.y = Random.Range(0, 2) == 0 ? 1 : -1;
 
-        rb.velocity = randomVel * initialSpeed;
+        randomVel.x *= initialSpeed;
+        //randomVel.y *= initialSpeed / 2.0f;
+
+        rb.velocity = randomVel;
+    }
+
+    private void FixedUpdate()
+    {
+        if (rb.velocity.x > maxSpeed)
+        {
+            Vector2 vel = rb.velocity;
+            vel.x *= 0.8f;
+            rb.velocity = vel;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Paddle"))
+        {
+            ContactPoint2D contact = collision.GetContact(0);
+            Vector2 localPosition = collision.gameObject.transform.InverseTransformPoint(contact.point);
+            
+            rb.AddForce(transform.up * localPosition.y * forceMagnitude, ForceMode2D.Impulse);
+        }
     }
 }

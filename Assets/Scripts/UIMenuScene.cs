@@ -10,4 +10,10 @@ public class UIMenuScene : MonoBehaviour
         SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
         GameManager.instance.SetMode(GameManager.GameMode.pvp);
     }
+
+    public void OnVSCompButton_Clicked()
+    {
+        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        GameManager.instance.SetMode(GameManager.GameMode.vsComp);
+    }
 }

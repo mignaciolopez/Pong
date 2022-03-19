@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 620680296}
   m_Layer: 0
   m_Name: Paddle1
-  m_TagString: Paddle_1
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -495,6 +495,8 @@ MonoBehaviour:
   axisName: Vertical
   speed: 12
   yBound: 6.6
+  aiControlled: 0
+  aiDelay: 0.0185
 --- !u!1 &695329836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,6 +1063,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialSpeed: 5
+  maxSpeed: 100
+  forceMagnitude: 10
 --- !u!1 &1368148321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,7 +1214,7 @@ GameObject:
   - component: {fileID: 1501379397}
   m_Layer: 0
   m_Name: Paddle2
-  m_TagString: Paddle_2
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1342,6 +1346,8 @@ MonoBehaviour:
   axisName: Vertical2
   speed: 12
   yBound: 6.6
+  aiControlled: 1
+  aiDelay: 0
 --- !u!1 &1691799239
 GameObject:
   m_ObjectHideFlags: 0

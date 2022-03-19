@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     {
         pvp = 0,
         vsComp
-    } 
-    GameMode gameMode;
+    }
+    GameMode gameMode = GameMode.vsComp;
 
     public static GameManager instance
     {
@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour
 
         get
         {
+            if (!m_instance)
+            {
+                GameObject gameManager = new GameObject("GameManager");
+                GameManager manager = gameManager.AddComponent<GameManager>();
+                m_instance = manager;
+            }
             return m_instance;
         }
     }
@@ -87,11 +93,23 @@ public class GameManager : MonoBehaviour
             ball.Launch();
             paddle1.RestartPosition();
             paddle2.RestartPosition();
+
+            switch (gameMode)
+            {
+                case GameMode.pvp:
+                    paddle2.aiControlled = false;
+                    break;
+                case GameMode.vsComp:
+                    paddle2.aiControlled = true;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
     public void SetMode(GameMode mode)
     {
-        gameMode = mode;      
+        gameMode = mode;
     }
 }
