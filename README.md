@@ -1,6 +1,9 @@
 # Pong
-Simple Pong 2D game.
-Unity 2020.3.30f1
+## Simple Pong 2D game.
+### Unity 2020.3.30f1
+
+### [Play it on the web](https://play.unity.com/mg/other/webgl-builds-166043)
+
 
 Sound FXs Artists:
   - [Tim Beek](https://assetstore.unity.com/packages/audio/sound-fx/free-casual-soundfx-pack-164843#publisher)
