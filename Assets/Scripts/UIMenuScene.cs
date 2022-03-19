@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class UIMenuScene : MonoBehaviour
 {
-    public void OnPlayButton_Clicked()
+    public void On2PlayersButton_Clicked()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        GameManager.instance.SetMode(GameManager.GameMode.pvp);
     }
 }

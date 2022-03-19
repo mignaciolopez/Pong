@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Ball ball;
-    [SerializeField] PaddleController paddle1;
-    [SerializeField] PaddleController paddle2;
+    Ball ball;
+    PaddleController paddle1;
+    PaddleController paddle2;
 
     private static GameManager m_instance = null;
+
+    public enum GameMode
+    {
+        pvp = 0,
+        vsComp
+    } 
+    GameMode gameMode;
+
     public static GameManager instance
     {
         private set { }
@@ -45,8 +53,45 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        ball.Launch();
-        paddle1.RestartPosition();
-        paddle2.RestartPosition();
+        GameObject obj;
+
+        if (!ball)
+        {
+            obj = GameObject.Find("Ball");
+            if (obj)
+                ball = obj.GetComponent<Ball>();
+            else
+                Debug.Log("Ball Not Found.");
+        }
+
+        if (!paddle1)
+        {
+            obj = GameObject.Find("Paddle1");
+            if (obj)
+                paddle1 = obj.GetComponent<PaddleController>();
+            else
+                Debug.Log("Paddle1 Not Found.");
+        }
+
+        if (!paddle2)
+        {
+            obj = GameObject.Find("Paddle2");
+            if (obj)
+                paddle2 = obj.GetComponent<PaddleController>();
+            else
+                Debug.Log("Paddle2 Not Found.");
+        }
+
+        if (ball && paddle1 && paddle2)
+        {
+            ball.Launch();
+            paddle1.RestartPosition();
+            paddle2.RestartPosition();
+        }
+    }
+
+    public void SetMode(GameMode mode)
+    {
+        gameMode = mode;      
     }
 }
