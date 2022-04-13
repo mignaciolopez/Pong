@@ -38,7 +38,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [HideInInspector] public int score1, score2;    
+    [HideInInspector] public int score1, score2;
+
+    private void Start()
+    {
+#if UNITY_EDITOR
+        QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        Application.targetFrameRate = 60;
+#endif
+    }
 
     private void Awake()
     {
